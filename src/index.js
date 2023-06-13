@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const env = process.env;
+const server = require("./config/server");
 
-const PORT = process.env.PORT || 3300;
-app.listen(PORT, () => {
-    console.log("SERVER: started on port", PORT);
-});
+// Built-in middleware to parse json
+app.use(express.json());
+
+// Start server and connect DB
+server(app);
