@@ -1,4 +1,4 @@
-const { handleError, conflictError } = require("../modules/handleError");
+const { handleError, conflictError } = require("../modules/errorHandler");
 
 const alreadyExists = async (model, cond, value, attributes) => {
     try {
