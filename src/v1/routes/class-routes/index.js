@@ -6,6 +6,7 @@ const {
     getOneClass,
     getAllClasses,
     createNewClass,
+    updateOneClass,
 } = require("../../../controllers/class-controller");
 
 // Class routes
@@ -17,5 +18,8 @@ router.get("/", getAllClasses);
 
 // 3. Get one class by id
 router.get("/:classId", getOneClass);
+
+// 4. Update one class by id
+router.patch("/:classId", updateOneClass);
 
 module.exports = router;
