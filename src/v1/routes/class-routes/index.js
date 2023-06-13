@@ -10,9 +10,15 @@ const {
     deleteOneClass,
 } = require("../../../controllers/class-controller");
 
+// Import middleware
+const { validateSchema } = require("../../../middlewares/validate-schema");
+
+// Import schema
+const { classSchema } = require("../../../validation/class-schema");
+
 // Class routes
 // 1. Create a new class
-router.post("/", createNewClass);
+router.post("/", validateSchema(classSchema), createNewClass);
 
 // 2. Get all classes
 router.get("/", getAllClasses);
@@ -21,7 +27,7 @@ router.get("/", getAllClasses);
 router.get("/:classId", getOneClass);
 
 // 4. Update one class by id
-router.patch("/:classId", updateOneClass);
+router.patch("/:classId", validateSchema(classSchema), updateOneClass);
 
 // 5. Delete one class by id
 router.delete("/:classId", deleteOneClass);
