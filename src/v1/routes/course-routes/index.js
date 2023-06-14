@@ -7,6 +7,7 @@ const {
     getAllCourses,
     createNewCourse,
     updateOneCourse,
+    deleteOneCourse,
 } = require("../../../controllers/course-controller");
 
 // Course routes
@@ -21,5 +22,8 @@ router.get("/:courseId", getOneCourse);
 
 // 4. Update one course by id
 router.patch("/:courseId", updateOneCourse);
+
+// 5. Delete one course by id
+router.delete("/:courseId", deleteOneCourse);
 
 module.exports = router;
