@@ -3,9 +3,10 @@ const router = express.Router();
 
 // Import Course controllers
 const {
-    createNewCourse,
-    getAllCourses,
     getOneCourse,
+    getAllCourses,
+    createNewCourse,
+    updateOneCourse,
 } = require("../../../controllers/course-controller");
 
 // Course routes
@@ -17,5 +18,8 @@ router.get("/", getAllCourses);
 
 // 3. Get one course by id
 router.get("/:courseId", getOneCourse);
+
+// 4. Update one course by id
+router.patch("/:courseId", updateOneCourse);
 
 module.exports = router;
