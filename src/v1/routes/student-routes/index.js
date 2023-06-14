@@ -10,9 +10,15 @@ const {
     deleteOneStudent,
 } = require("../../../controllers/student-controller");
 
+// Import middleware
+const { validateSchema } = require("../../../middlewares/validate-schema");
+
+// Import schema
+const { studentSchema } = require("../../../validation/student-schema");
+
 // Student routes
 // 1. Create a new student
-router.post("/", createNewStudent);
+router.post("/", validateSchema(studentSchema), createNewStudent);
 
 // 2. Get all students
 router.get("/", getAllStudents);
@@ -21,7 +27,7 @@ router.get("/", getAllStudents);
 router.get("/:studentId", getOneStudent);
 
 // 4. Update one student by id
-router.patch("/:studentId", updateOneStudent);
+router.patch("/:studentId", validateSchema(studentSchema), updateOneStudent);
 
 // 5. Delete one student by id
 router.delete("/:studentId", deleteOneStudent);
