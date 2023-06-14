@@ -1,7 +1,9 @@
-const { createNewCourse } = require("./createNewCourse");
+const { getOneCourse } = require("./getOneCourse");
 const { getAllCourses } = require("./getAllCourses");
+const { createNewCourse } = require("./createNewCourse");
 
 module.exports = {
-    createNewCourse,
+    getOneCourse,
     getAllCourses,
+    createNewCourse,
 };

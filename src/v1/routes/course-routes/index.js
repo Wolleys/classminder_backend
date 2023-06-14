@@ -5,6 +5,7 @@ const router = express.Router();
 const {
     createNewCourse,
     getAllCourses,
+    getOneCourse,
 } = require("../../../controllers/course-controller");
 
 // Course routes
@@ -13,5 +14,8 @@ router.post("/", createNewCourse);
 
 // 2. Get all courses
 router.get("/", getAllCourses);
+
+// 3. Get one course by id
+router.get("/:courseId", getOneCourse);
 
 module.exports = router;
