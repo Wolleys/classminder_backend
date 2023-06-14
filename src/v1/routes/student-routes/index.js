@@ -6,6 +6,7 @@ const {
     getOneStudent,
     getAllStudents,
     createNewStudent,
+    updateOneStudent,
 } = require("../../../controllers/student-controller");
 
 // Student routes
@@ -17,5 +18,8 @@ router.get("/", getAllStudents);
 
 // 3. Get one student by id
 router.get("/:studentId", getOneStudent);
+
+// 4. Update one student by id
+router.patch("/:studentId", updateOneStudent);
 
 module.exports = router;
