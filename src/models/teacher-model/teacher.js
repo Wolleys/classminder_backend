@@ -18,7 +18,7 @@ const teacherModel = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            slug: {
+            service_number: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

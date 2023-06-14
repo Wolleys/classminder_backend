@@ -12,7 +12,7 @@ const studentAssocs = (sequelize) => {
         Student.belongsTo(Class, { foreignKey: "class_id" });
 
         // 2. Student belongs to Course (belongsTo) 1:1
-        Student.belongsTo(Course, { foreignKey: "course_id" });
+        // Student.belongsTo(Course, { foreignKey: "course_id" });
 
         return { Student };
     } catch (error) {

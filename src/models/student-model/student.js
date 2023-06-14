@@ -18,9 +18,21 @@ const studentModel = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            slug: {
+            admin_number: {
                 type: DataTypes.STRING,
                 allowNull: false,
+            },
+            course_id: {
+                type: DataTypes.JSON,
+                allowNull: false,
+                defaultValue: [],
+                get() {
+                    const courseIds = JSON.parse(this.getDataValue("course_id"));
+                    return courseIds ? courseIds.map((id) => id.toString()) : [];
+                },
+                set(courseIds) {
+                    this.setDataValue("course_id", JSON.stringify(courseIds));
+                },
             },
         },
         {
