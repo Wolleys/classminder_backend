@@ -13,6 +13,7 @@ const studentSchema = yup.object({
         .array()
         .min(1, "You must have at least one course")
         .required("Course is required"),
+    class_id: yup.string().required("Class is required"),
 });
 
 module.exports = { studentSchema };

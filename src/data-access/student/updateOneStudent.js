@@ -2,7 +2,7 @@ const { findRecord } = require("../helpers/findRecord");
 const { updateOneEntity } = require("../modules");
 
 const updateOneStudent = async (model, studentId, data) => {
-    // Check if the given ID exists
+    // Check if the given student ID exists
     const studDesc = "a student";
     const studCond = { id: studentId };
     const studAttrs = ["id"];
@@ -17,6 +17,14 @@ const updateOneStudent = async (model, studentId, data) => {
 
         await findRecord(model.Course, cosDesc, courseId, cosCond, cosAttrs);
     }
+
+    // Check if the given class ID exists
+    const classDesc = "a class";
+    const classId = data.class_id;
+    const classCond = { id: classId };
+    const classAttrs = ["id"];
+
+    await findRecord(model.Class, classDesc, classId, classCond, classAttrs);
     updateOneEntity(model.Student, studCond, data);
 };
 

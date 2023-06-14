@@ -18,6 +18,14 @@ const createNewStudent = async (model, newStudent) => {
 
         await findRecord(model.Course, desc, courseId, cond, attrs);
     }
+
+    // Check if the given class ID exists
+    const classDesc = "a class";
+    const classId = newStudent.class_id;
+    const classCond = { id: classId };
+    const classAttrs = ["id"];
+
+    await findRecord(model.Class, classDesc, classId, classCond, classAttrs);
     return createNewEntity(model.Student, newStudent);
 };
 
