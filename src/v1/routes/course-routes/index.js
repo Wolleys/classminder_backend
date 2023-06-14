@@ -10,9 +10,15 @@ const {
     deleteOneCourse,
 } = require("../../../controllers/course-controller");
 
+// Import middleware
+const { validateSchema } = require("../../../middlewares/validate-schema");
+
+// Import schema
+const { courseSchema } = require("../../../validation/course-schema");
+
 // Course routes
 // 1. Create a new course
-router.post("/", createNewCourse);
+router.post("/", validateSchema(courseSchema), createNewCourse);
 
 // 2. Get all courses
 router.get("/", getAllCourses);
@@ -21,7 +27,7 @@ router.get("/", getAllCourses);
 router.get("/:courseId", getOneCourse);
 
 // 4. Update one course by id
-router.patch("/:courseId", updateOneCourse);
+router.patch("/:courseId", validateSchema(courseSchema), updateOneCourse);
 
 // 5. Delete one course by id
 router.delete("/:courseId", deleteOneCourse);
