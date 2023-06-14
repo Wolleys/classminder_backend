@@ -3,8 +3,9 @@ const router = express.Router();
 
 // Import Student controllers
 const {
-    createNewStudent,
+    getOneStudent,
     getAllStudents,
+    createNewStudent,
 } = require("../../../controllers/student-controller");
 
 // Student routes
@@ -13,5 +14,8 @@ router.post("/", createNewStudent);
 
 // 2. Get all students
 router.get("/", getAllStudents);
+
+// 3. Get one student by id
+router.get("/:studentId", getOneStudent);
 
 module.exports = router;
