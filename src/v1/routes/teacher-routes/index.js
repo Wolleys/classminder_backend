@@ -12,9 +12,15 @@ const {
     deleteOneTeacher,
 } = require("../../../controllers/teacher-controller");
 
+// Import middleware
+const { validateSchema } = require("../../../middlewares/validate-schema");
+
+// Import schema
+const { teacherSchema } = require("../../../validation/teacher-schema");
+
 // Teacher routes
 // 1. Create a new teacher
-router.post("/", createNewTeacher);
+router.post("/", validateSchema(teacherSchema), createNewTeacher);
 
 // 2. Get all teachers
 router.get("/", getAllTeachers);
