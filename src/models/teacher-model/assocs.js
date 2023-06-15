@@ -9,10 +9,10 @@ const teacherAssocs = (sequelize) => {
         const Teacher = teacherModel(sequelize);
 
         // 1. Teacher belongs to Class (belongsTo) 1:1
-        Teacher.belongsTo(Class, { foreignKey: "class_id" });
+        // Teacher.belongsTo(Class, { foreignKey: "class_id" });
 
         // 2. Teacher belongs to Course (belongsTo) 1:1
-        Teacher.belongsTo(Course, { foreignKey: "course_id" });
+        // Teacher.belongsTo(Course, { foreignKey: "course_id" });
 
         return { Teacher };
     } catch (error) {
