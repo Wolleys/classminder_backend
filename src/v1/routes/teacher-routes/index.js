@@ -7,6 +7,7 @@ const {
     getAllTeachers,
     createNewTeacher,
     updateOneTeacher,
+    deleteOneTeacher,
 } = require("../../../controllers/teacher-controller");
 
 // Teacher routes
@@ -21,5 +22,8 @@ router.get("/:teacherId", getOneTeacher);
 
 // 4. Update one teacher by id
 router.patch("/:teacherId", updateOneTeacher);
+
+// 5. Delete one teacher by id
+router.delete("/:teacherId", deleteOneTeacher);
 
 module.exports = router;
