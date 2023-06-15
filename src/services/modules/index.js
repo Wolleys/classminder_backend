@@ -43,10 +43,20 @@ const deleteOneEntity = async (model, entityId, dataAccess) => {
     }
 };
 
+const deleteChildId = async (model, parentId, childId, dataAccess) => {
+    try {
+        const deletedId = dataAccess(model, parentId, childId);
+        return deletedId;
+    } catch (error) {
+        throw error;
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
     getOneEntity,
     updateOneEntity,
     deleteOneEntity,
+    deleteChildId,
 };

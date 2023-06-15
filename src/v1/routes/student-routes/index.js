@@ -5,6 +5,7 @@ const router = express.Router();
 const {
     getOneStudent,
     getAllStudents,
+    deleteCourseId,
     createNewStudent,
     updateOneStudent,
     deleteOneStudent,
@@ -31,5 +32,8 @@ router.patch("/:studentId", validateSchema(studentSchema), updateOneStudent);
 
 // 5. Delete one student by id
 router.delete("/:studentId", deleteOneStudent);
+
+// 6. Delete one courseId from student by id
+router.delete("/:studentId/courses/:courseId", deleteCourseId);
 
 module.exports = router;

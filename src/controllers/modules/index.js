@@ -64,10 +64,26 @@ const deleteOneEntity = async (req, res, idName, service) => {
     }
 };
 
+const deleteChildId = async (req, res, parentIdName, childIdName, service) => {
+    const model = req.models;
+    const childId = req.params[childIdName];
+    const parentId = req.params[parentIdName];
+
+    try {
+        await service(model, parentId, childId);
+        res
+            .status(200)
+            .json({ status: "OK", message: "Record deleted successfully." });
+    } catch (error) {
+        handleError(res, error);
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
     getOneEntity,
     updateOneEntity,
     deleteOneEntity,
+    deleteChildId,
 };

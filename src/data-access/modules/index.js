@@ -1,3 +1,4 @@
+const { findRecord } = require("../helpers/findRecord");
 const { handleError, notFoundError } = require("./errorHandler");
 
 const createNewEntity = async (model, newEntity) => {
@@ -50,10 +51,34 @@ const deleteOneEntity = async (model, desc, entityId, cond, attributes) => {
     }
 };
 
+const deleteChildId = async (params, childDesc) => {
+    const { model, recDesc, recId, recCond, recAttrs, colName, idToDel } = params;
+    try {
+        const record = await findRecord(model, recDesc, recId, recCond, recAttrs);
+        let columnValues = record.getDataValue(colName);
+        columnValues = JSON.parse(columnValues) || [];
+
+        if (!columnValues.includes(idToDel)) {
+            notFoundError(childDesc, idToDel);
+        }
+
+        if (columnValues.length === 1) {
+            throw { status: 400, message: "Field cannot remain empty" };
+        }
+        const updatedValues = columnValues.filter((id) => id !== idToDel);
+
+        await record.update({ [colName]: updatedValues });
+        return record;
+    } catch (error) {
+        handleError(error);
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
     getOneEntity,
     updateOneEntity,
     deleteOneEntity,
+    deleteChildId,
 };
