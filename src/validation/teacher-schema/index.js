@@ -7,7 +7,7 @@ const teacherSchema = yup.object({
         .positive("Must be more than 0")
         .integer("Must be an integer number")
         .min(18, "Must be at least 18 years")
-        .required("teacher age is requred"),
+        .required("Teacher age is requred"),
     service_number: yup.string().required("Service number is required"),
     course_id: yup
         .array()
