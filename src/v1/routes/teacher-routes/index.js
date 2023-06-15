@@ -4,6 +4,7 @@ const router = express.Router();
 // Import Teacher controllers
 const {
     getOneTeacher,
+    deleteClassId,
     getAllTeachers,
     deleteCourseId,
     createNewTeacher,
@@ -29,5 +30,8 @@ router.delete("/:teacherId", deleteOneTeacher);
 
 // 6. Delete one courseId from teacher by id
 router.delete("/:teacherId/courses/:courseId", deleteCourseId);
+
+// 7. Delete one classId from teacher by id
+router.delete("/:teacherId/classes/:classId", deleteClassId);
 
 module.exports = router;
