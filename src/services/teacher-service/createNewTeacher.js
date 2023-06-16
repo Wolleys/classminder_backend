@@ -2,7 +2,13 @@ const { createNewEntity } = require("../modules");
 const teacherData = require("../../data-access/teacher");
 
 const createNewTeacher = (model, newTeacher) => {
-    return createNewEntity(model, newTeacher, teacherData.createNewTeacher);
+    // Create a new entity params
+    const newEntityParams = {
+        model,
+        newEntity: newTeacher,
+        dataAccess: teacherData.createNewTeacher,
+    };
+    return createNewEntity(newEntityParams);
 };
 
 module.exports = { createNewTeacher };

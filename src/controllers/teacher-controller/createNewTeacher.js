@@ -2,7 +2,13 @@ const { createNewEntity } = require("../modules");
 const teacherService = require("../../services/teacher-service");
 
 const createNewTeacher = (req, res) => {
-    createNewEntity(req, res, teacherService.createNewTeacher);
+    // Create a new entity params
+    const newEntityParams = {
+        req,
+        res,
+        service: teacherService.createNewTeacher,
+    };
+    createNewEntity(newEntityParams);
 };
 
 module.exports = { createNewTeacher };
