@@ -11,12 +11,12 @@ const createNewClass = async (model, newClass) => {
     };
     await alreadyExists(classNameParams);
 
-    // Add a new class params
-    const newClassParams = {
+    // Create a new entity params
+    const newEntityParams = {
         model: model.Class,
         newEntity: newClass,
     };
-    return createNewEntity(newClassParams);
+    return createNewEntity(newEntityParams);
 };
 
 module.exports = { createNewClass };

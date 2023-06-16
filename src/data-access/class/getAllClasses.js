@@ -1,10 +1,14 @@
 const { getAllEntities } = require("../modules");
 
 const getAllClasses = (model) => {
-    const order = [["created_at", "DESC"]];
-    const attrs = ["id", "class_name", "slug"];
+    // Get all entities params
+    const allEntitiesParams = {
+        model: model.Class,
+        order: [["created_at", "DESC"]],
+        attributes: ["id", "class_name", "slug"],
+    };
 
-    return getAllEntities(model.Class, attrs, order);
+    return getAllEntities(allEntitiesParams);
 };
 
 module.exports = { getAllClasses };

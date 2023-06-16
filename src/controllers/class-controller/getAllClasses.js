@@ -2,7 +2,13 @@ const { getAllEntities } = require("../modules");
 const classService = require("../../services/class-service");
 
 const getAllClasses = (req, res) => {
-    getAllEntities(req, res, classService.getAllClasses);
+    // Get all entities params
+    const allEntitiesParams = {
+        req,
+        res,
+        service: classService.getAllClasses,
+    };
+    getAllEntities(allEntitiesParams);
 };
 
 module.exports = { getAllClasses };

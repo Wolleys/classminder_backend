@@ -13,7 +13,8 @@ const createNewEntity = async (params) => {
     }
 };
 
-const getAllEntities = async (req, res, service) => {
+const getAllEntities = async (params) => {
+    const { req, res, service } = params;
     const model = req.models;
 
     try {

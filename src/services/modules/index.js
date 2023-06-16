@@ -8,7 +8,8 @@ const createNewEntity = (params) => {
     }
 };
 
-const getAllEntities = (model, dataAccess) => {
+const getAllEntities = (params) => {
+    const { model, dataAccess } = params;
     try {
         const allEntities = dataAccess(model);
         return allEntities;

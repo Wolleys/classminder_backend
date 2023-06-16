@@ -11,7 +11,8 @@ const createNewEntity = async (params) => {
     }
 };
 
-const getAllEntities = async (model, attributes, order) => {
+const getAllEntities = async (params) => {
+    const { model, attributes, order } = params;
     try {
         const allEntities = await model.findAll({ order, attributes });
         return allEntities;
