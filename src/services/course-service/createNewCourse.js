@@ -8,7 +8,13 @@ const createNewCourse = (model, newCourse) => {
         slug: slugify(newCourse.course_name).toLowerCase(),
     };
 
-    return createNewEntity(model, data, courseData.createNewCourse);
+    // Create a new entity params
+    const newEntityParams = {
+        model,
+        newEntity: data,
+        dataAccess: courseData.createNewCourse,
+    };
+    return createNewEntity(newEntityParams);
 };
 
 module.exports = { createNewCourse };
