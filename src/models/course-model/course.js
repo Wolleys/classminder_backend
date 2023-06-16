@@ -14,7 +14,7 @@ const courseModel = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            slug: {
+            course_number: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

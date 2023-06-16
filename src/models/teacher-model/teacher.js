@@ -10,15 +10,36 @@ const teacherModel = (sequelize) => {
                 primaryKey: true,
                 unique: true,
             },
-            teacher_name: {
+            first_name: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            teacher_age: {
+            middle_name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            last_name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            email: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                unique: true,
+            },
+            role: {
+                type: DataTypes.STRING,
+                defaultValue: "Teacher",
+            },
+            age: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
             service_number: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            password: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

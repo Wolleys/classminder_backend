@@ -5,7 +5,7 @@ const getAllClasses = (model) => {
     const allEntitiesParams = {
         model: model.Class,
         order: [["created_at", "DESC"]],
-        attributes: ["id", "class_name", "slug"],
+        attributes: ["id", "class_name", "stream"],
     };
     return getAllEntities(allEntitiesParams);
 };

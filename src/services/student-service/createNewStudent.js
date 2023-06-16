@@ -1,9 +1,12 @@
 const { createNewEntity } = require("../modules");
 const studentData = require("../../data-access/student");
+const { hashPassword } = require("../../middlewares/auth/bcrypt");
 
-const createNewStudent = (model, newStudent) => {
+const createNewStudent = async (model, newStudent) => {
+    const hashedPassword = await hashPassword(newStudent.password);
     data = {
         ...newStudent,
+        password: hashedPassword,
         class_id: newStudent.class_id,
     };
 

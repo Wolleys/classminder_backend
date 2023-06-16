@@ -2,12 +2,12 @@ const { alreadyExists } = require("../helpers/alreadyExists");
 const { createNewEntity } = require("../modules");
 
 const createNewClass = async (model, newClass) => {
-    // Check if class name already exists
+    // Check if stream name already exists
     const classNameParams = {
         model: model.Class,
-        value: newClass.class_name,
-        attributes: ["class_name"],
-        cond: { class_name: newClass.class_name },
+        value: newClass.stream,
+        attributes: ["stream"],
+        cond: { stream: newClass.stream },
     };
     await alreadyExists(classNameParams);
 

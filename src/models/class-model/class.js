@@ -14,7 +14,7 @@ const classModel = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            slug: {
+            stream: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

@@ -7,7 +7,7 @@ const getOneClass = (model, classId) => {
         entityId: classId,
         model: model.Class,
         cond: { id: classId },
-        attributes: ["id", "class_name", "slug"],
+        attributes: ["id", "class_name", "stream"],
     };
     return getOneEntity(oneEntityParams);
 };
