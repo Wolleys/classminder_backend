@@ -2,7 +2,13 @@ const { getOneEntity } = require("../modules");
 const studentData = require("../../data-access/student");
 
 const getOneStudent = (model, studentId) => {
-    return getOneEntity(model, studentId, studentData.getOneStudent);
+    // Get one entity params
+    const oneEntityParams = {
+        model,
+        entityId: studentId,
+        dataAccess: studentData.getOneStudent,
+    };
+    return getOneEntity(oneEntityParams);
 };
 
 module.exports = { getOneStudent };
