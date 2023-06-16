@@ -2,12 +2,23 @@ const { findRecord } = require("../helpers/findRecord");
 const { updateOneEntity } = require("../modules");
 
 const updateOneClass = async (model, classId, data) => {
-    const desc = "a class";
-    const cond = { id: classId };
-    const attrs = ["id"];
+    // Check if the given class ID exists
+    const findClassId = {
+        desc: "a class",
+        entityId: classId,
+        attributes: ["id"],
+        model: model.Class,
+        cond: { id: classId },
+    };
+    await findRecord(findClassId);
 
-    await findRecord(model.Class, desc, classId, cond, attrs);
-    updateOneEntity(model.Class, cond, data);
+    // Update one entity params
+    const oneEntityParams = {
+        updateData: data,
+        model: model.Class,
+        cond: { id: classId },
+    };
+    updateOneEntity(oneEntityParams);
 };
 
 module.exports = { updateOneClass };

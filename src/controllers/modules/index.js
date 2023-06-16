@@ -38,7 +38,8 @@ const getOneEntity = async (params) => {
     }
 };
 
-const updateOneEntity = async (req, res, idName, service) => {
+const updateOneEntity = async (params) => {
+    const { req, res, idName, service } = params;
     const body = req.body;
     const model = req.models;
     const entityId = req.params[idName];

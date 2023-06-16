@@ -28,7 +28,8 @@ const getOneEntity = (params) => {
     }
 };
 
-const updateOneEntity = (model, entityId, updateData, dataAccess) => {
+const updateOneEntity = (params) => {
+    const { model, entityId, updateData, dataAccess } = params;
     try {
         const entity = dataAccess(model, entityId, updateData);
         return entity;

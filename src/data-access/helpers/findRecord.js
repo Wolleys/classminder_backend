@@ -1,6 +1,7 @@
 const { handleError, notFoundError } = require("../modules/errorHandler");
 
-const findRecord = async (model, desc, entityId, cond, attributes) => {
+const findRecord = async (props) => {
+    const { model, desc, entityId, cond, attributes } = props;
     try {
         const recordToFind = await model.findOne({ where: cond, attributes });
         if (!recordToFind) {

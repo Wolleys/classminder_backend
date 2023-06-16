@@ -34,7 +34,8 @@ const getOneEntity = async (params) => {
     }
 };
 
-const updateOneEntity = async (model, cond, updateData) => {
+const updateOneEntity = async (props) => {
+    const { model, cond, updateData } = props;
     try {
         await model.update({ ...updateData }, { where: cond });
     } catch (error) {
