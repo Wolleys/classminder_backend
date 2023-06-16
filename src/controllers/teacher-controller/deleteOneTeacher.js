@@ -2,7 +2,14 @@ const { deleteOneEntity } = require("../modules");
 const teacherService = require("../../services/teacher-service");
 
 const deleteOneTeacher = (req, res) => {
-    deleteOneEntity(req, res, "teacherId", teacherService.deleteOneTeacher);
+    // Get one entity params
+    const oneEntityParams = {
+        req,
+        res,
+        idName: "teacherId",
+        service: teacherService.deleteOneTeacher,
+    };
+    deleteOneEntity(oneEntityParams);
 };
 
 module.exports = { deleteOneTeacher };
