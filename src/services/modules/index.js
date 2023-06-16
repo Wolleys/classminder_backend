@@ -48,9 +48,10 @@ const deleteOneEntity = (params) => {
     }
 };
 
-const deleteChildId = (model, parentId, childId, dataAccess) => {
+const deleteChildEntity = (params) => {
+    const { model, parentEntityId, childEntityId, dataAccess } = params;
     try {
-        const deletedId = dataAccess(model, parentId, childId);
+        const deletedId = dataAccess(model, parentEntityId, childEntityId);
         return deletedId;
     } catch (error) {
         throw error;
@@ -63,5 +64,5 @@ module.exports = {
     getOneEntity,
     updateOneEntity,
     deleteOneEntity,
-    deleteChildId,
+    deleteChildEntity,
 };

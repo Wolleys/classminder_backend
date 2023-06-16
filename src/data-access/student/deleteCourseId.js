@@ -1,18 +1,19 @@
-const { deleteChildId } = require("../modules");
+const { deleteChildEntity } = require("../modules");
 
 const deleteCourseId = async (model, studentId, courseId) => {
-    // Define deleteChildId function params
-    const params = {
-        model: model.Student,
-        recDesc: "a student",
-        recId: studentId,
-        recCond: { id: studentId },
-        recAttrs: ["id", "course_id"],
+    // Delete child entity params
+    const childEntityParams = {
+        desc: "a student",
         colName: "course_id",
-        idToDel: courseId,
+        model: model.Student,
+        cond: { id: studentId },
+        childEntityId: courseId,
+        parentEntityId: studentId,
+        attributes: ["id", "course_id"],
     };
 
-    await deleteChildId(params, "a course");
+    const childEntityDesc = "a course";
+    await deleteChildEntity(childEntityParams, childEntityDesc);
 };
 
 module.exports = { deleteCourseId };

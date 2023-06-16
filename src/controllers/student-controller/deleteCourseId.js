@@ -1,10 +1,16 @@
-const { deleteChildId } = require("../modules");
+const { deleteChildEntity } = require("../modules");
 const studentService = require("../../services/student-service");
 
 const deleteCourseId = (req, res) => {
-    const childId = "courseId";
-    const parentId = "studentId";
-    deleteChildId(req, res, parentId, childId, studentService.deleteCourseId);
+    // Delete child entity params
+    const childEntityParams = {
+        req,
+        res,
+        childEntityId: "courseId",
+        parentEntityId: "studentId",
+        service: studentService.deleteCourseId,
+    };
+    deleteChildEntity(childEntityParams);
 };
 
 module.exports = { deleteCourseId };

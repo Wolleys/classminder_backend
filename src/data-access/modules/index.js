@@ -56,21 +56,22 @@ const deleteOneEntity = async (params) => {
     }
 };
 
-const deleteChildId = async (params, childDesc) => {
-    const { model, recDesc, recId, recCond, recAttrs, colName, idToDel } = params;
+const deleteChildEntity = async (params, childEntityDesc) => {
+    const { model, desc, cond, attributes, colName, childEntityId, parentEntityId } = params;
     try {
-        const record = await findRecord(model, recDesc, recId, recCond, recAttrs);
+        const findParentEntityId = { cond, desc, model, attributes, entityId: parentEntityId };
+        const record = await findRecord(findParentEntityId);
         let columnValues = record.getDataValue(colName);
         columnValues = JSON.parse(columnValues) || [];
 
-        if (!columnValues.includes(idToDel)) {
-            notFoundError(childDesc, idToDel);
+        if (!columnValues.includes(childEntityId)) {
+            notFoundError(childEntityDesc, childEntityId);
         }
 
         if (columnValues.length === 1) {
             throw { status: 400, message: "Field cannot remain empty" };
         }
-        const updatedValues = columnValues.filter((id) => id !== idToDel);
+        const updatedValues = columnValues.filter((id) => id !== childEntityId);
 
         await record.update({ [colName]: updatedValues });
         return record;
@@ -85,5 +86,5 @@ module.exports = {
     getOneEntity,
     updateOneEntity,
     deleteOneEntity,
-    deleteChildId,
+    deleteChildEntity,
 };
