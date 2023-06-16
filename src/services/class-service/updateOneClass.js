@@ -15,7 +15,6 @@ const updateOneClass = (model, classId, data) => {
         updateData: update,
         dataAccess: classData.updateOneClass,
     };
-
     return updateOneEntity(oneEntityParams);
 };
 

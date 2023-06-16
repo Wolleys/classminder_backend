@@ -8,7 +8,14 @@ const updateOneCourse = (model, courseId, data) => {
         slug: slugify(data.course_name).toLowerCase(),
     };
 
-    return updateOneEntity(model, courseId, update, courseData.updateOneCourse);
+    // Update one entity params
+    const oneEntityParams = {
+        model,
+        entityId: courseId,
+        updateData: update,
+        dataAccess: courseData.updateOneCourse,
+    };
+    return updateOneEntity(oneEntityParams);
 };
 
 module.exports = { updateOneCourse };
