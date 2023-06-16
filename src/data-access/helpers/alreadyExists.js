@@ -1,6 +1,7 @@
 const { handleError, conflictError } = require("../modules/errorHandler");
 
-const alreadyExists = async (model, cond, value, attributes) => {
+const alreadyExists = async (params) => {
+    const { model, cond, value, attributes } = params;
     try {
         const recordToCheck = await model.findOne({ where: cond, attributes });
         if (recordToCheck) {

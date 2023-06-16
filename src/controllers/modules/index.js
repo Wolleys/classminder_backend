@@ -1,6 +1,7 @@
 const handleError = require("./errorHandler");
 
-const createNewEntity = async (req, res, service) => {
+const createNewEntity = async (params) => {
+    const { req, res, service } = params;
     const body = req.body;
     const model = req.models;
 

@@ -1,4 +1,5 @@
-const createNewEntity = (model, newEntity, dataAccess) => {
+const createNewEntity = (params) => {
+    const { model, newEntity, dataAccess } = params;
     try {
         const createdEntity = dataAccess(model, newEntity);
         return createdEntity;

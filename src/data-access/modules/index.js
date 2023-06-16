@@ -1,7 +1,8 @@
 const { findRecord } = require("../helpers/findRecord");
 const { handleError, notFoundError } = require("./errorHandler");
 
-const createNewEntity = async (model, newEntity) => {
+const createNewEntity = async (params) => {
+    const { model, newEntity } = params;
     try {
         const createdEntity = await model.create(newEntity);
         return createdEntity;

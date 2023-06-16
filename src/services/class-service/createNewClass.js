@@ -8,7 +8,13 @@ const createNewClass = (model, newClass) => {
         slug: slugify(newClass.class_name).toLowerCase(),
     };
 
-    return createNewEntity(model, data, classData.createNewClass);
+    // Add a new class params
+    const newClassParams = {
+        model,
+        newEntity: data,
+        dataAccess: classData.createNewClass,
+    };
+    return createNewEntity(newClassParams);
 };
 
 module.exports = { createNewClass };
