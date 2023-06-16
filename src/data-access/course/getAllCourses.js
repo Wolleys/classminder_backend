@@ -5,7 +5,7 @@ const getAllCourses = (model) => {
     const allEntitiesParams = {
         model: model.Course,
         order: [["created_at", "DESC"]],
-        attributes: ["id", "course_name", "slug"],
+        attributes: ["id", "course_name", "course_number"],
     };
     return getAllEntities(allEntitiesParams);
 };

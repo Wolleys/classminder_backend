@@ -7,10 +7,14 @@ const getAllStudents = (model) => {
         order: [["created_at", "DESC"]],
         attributes: [
             "id",
-            "student_name",
-            "student_age",
+            "first_name",
+            "middle_name",
+            "last_name",
+            "email",
+            "age",
             "admin_number",
             "course_id",
+            "class_id",
         ],
     };
     return getAllEntities(allEntitiesParams);

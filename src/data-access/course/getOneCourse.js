@@ -7,7 +7,7 @@ const getOneCourse = (model, courseId) => {
         entityId: courseId,
         model: model.Course,
         cond: { id: courseId },
-        attributes: ["id", "course_name", "slug"],
+        attributes: ["id", "course_name", "course_number"],
     };
     return getOneEntity(oneEntityParams);
 };

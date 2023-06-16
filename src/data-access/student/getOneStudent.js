@@ -9,10 +9,14 @@ const getOneStudent = (model, studentId) => {
         cond: { id: studentId },
         attributes: [
             "id",
-            "student_name",
-            "student_age",
+            "first_name",
+            "middle_name",
+            "last_name",
+            "email",
+            "age",
             "admin_number",
             "course_id",
+            "class_id",
         ],
     };
     return getOneEntity(oneEntityParams);
