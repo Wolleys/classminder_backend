@@ -34,8 +34,8 @@ const getOneEntity = async (params) => {
     }
 };
 
-const updateOneEntity = async (props) => {
-    const { model, cond, updateData } = props;
+const updateOneEntity = async (params) => {
+    const { model, cond, updateData } = params;
     try {
         await model.update({ ...updateData }, { where: cond });
     } catch (error) {
@@ -43,7 +43,8 @@ const updateOneEntity = async (props) => {
     }
 };
 
-const deleteOneEntity = async (model, desc, entityId, cond, attributes) => {
+const deleteOneEntity = async (params) => {
+    const { model, desc, entityId, cond, attributes } = params;
     try {
         const entity = await model.destroy({ where: cond, attributes });
         if (!entity) {

@@ -38,7 +38,8 @@ const updateOneEntity = (params) => {
     }
 };
 
-const deleteOneEntity = async (model, entityId, dataAccess) => {
+const deleteOneEntity = (params) => {
+    const { model, entityId, dataAccess } = params;
     try {
         const entity = dataAccess(model, entityId);
         return entity;
@@ -47,7 +48,7 @@ const deleteOneEntity = async (model, entityId, dataAccess) => {
     }
 };
 
-const deleteChildId = async (model, parentId, childId, dataAccess) => {
+const deleteChildId = (model, parentId, childId, dataAccess) => {
     try {
         const deletedId = dataAccess(model, parentId, childId);
         return deletedId;

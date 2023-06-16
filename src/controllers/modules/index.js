@@ -54,7 +54,8 @@ const updateOneEntity = async (params) => {
     }
 };
 
-const deleteOneEntity = async (req, res, idName, service) => {
+const deleteOneEntity = async (params) => {
+    const { req, res, idName, service } = params;
     const model = req.models;
     const entityId = req.params[idName];
 

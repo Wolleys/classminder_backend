@@ -1,11 +1,15 @@
 const { deleteOneEntity } = require("../modules");
 
 const deleteOneClass = (model, classId) => {
-    const desc = "a class";
-    const cond = { id: classId };
-    const attrs = ["id"];
-
-    return deleteOneEntity(model.Class, desc, classId, cond, attrs);
+    // Delete one entity params
+    const oneEntityParams = {
+        desc: "a class",
+        entityId: classId,
+        attributes: ["id"],
+        model: model.Class,
+        cond: { id: classId },
+    };
+    return deleteOneEntity(oneEntityParams);
 };
 
 module.exports = { deleteOneClass };

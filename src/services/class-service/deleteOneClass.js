@@ -2,7 +2,13 @@ const { deleteOneEntity } = require("../modules");
 const classData = require("../../data-access/class");
 
 const deleteOneClass = (model, classId) => {
-    return deleteOneEntity(model, classId, classData.deleteOneClass);
+    // Delete one entity params
+    const oneEntityParams = {
+        model,
+        entityId: classId,
+        dataAccess: classData.deleteOneClass,
+    };
+    return deleteOneEntity(oneEntityParams);
 };
 
 module.exports = { deleteOneClass };
