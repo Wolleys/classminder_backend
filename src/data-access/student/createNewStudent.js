@@ -4,29 +4,42 @@ const { createNewEntity } = require("../modules");
 
 const createNewStudent = async (model, newStudent) => {
     // Check if admin number already exists
-    const numCond = { admin_number: newStudent.admin_number };
-    const numVal = newStudent.admin_number;
-    const numAttrs = ["admin_number"];
-
-    await alreadyExists(model.Student, numCond, numVal, numAttrs);
+    const adminNumParams = {
+        model: model.Student,
+        attributes: ["admin_number"],
+        value: newStudent.admin_number,
+        cond: { admin_number: newStudent.admin_number },
+    };
+    await alreadyExists(adminNumParams);
 
     // Iterate over each course ID and check if it exists
     for (const courseId of newStudent.course_id) {
-        const desc = "a course";
-        const attrs = ["id"];
-        const cond = { id: courseId };
-
-        await findRecord(model.Course, desc, courseId, cond, attrs);
+        const findCourseId = {
+            desc: "a course",
+            entityId: courseId,
+            attributes: ["id"],
+            model: model.Course,
+            cond: { id: courseId },
+        };
+        await findRecord(findCourseId);
     }
 
     // Check if the given class ID exists
-    const classDesc = "a class";
-    const classId = newStudent.class_id;
-    const classCond = { id: classId };
-    const classAttrs = ["id"];
+    const findClassId = {
+        desc: "a class",
+        attributes: ["id"],
+        model: model.Class,
+        entityId: newStudent.class_id,
+        cond: { id: newStudent.class_id },
+    };
+    await findRecord(findClassId);
 
-    await findRecord(model.Class, classDesc, classId, classCond, classAttrs);
-    return createNewEntity(model.Student, newStudent);
+    // Create a new entity params
+    const newEntityParams = {
+        model: model.Student,
+        newEntity: newStudent,
+    };
+    return createNewEntity(newEntityParams);
 };
 
 module.exports = { createNewStudent };
