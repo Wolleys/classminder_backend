@@ -2,7 +2,14 @@ const { updateOneEntity } = require("../modules");
 const studentData = require("../../data-access/student");
 
 const updateOneStudent = (model, studentId, data) => {
-    return updateOneEntity(model, studentId, data, studentData.updateOneStudent);
+    // Update one entity params
+    const oneEntityParams = {
+        model,
+        updateData: data,
+        entityId: studentId,
+        dataAccess: studentData.updateOneStudent,
+    };
+    return updateOneEntity(oneEntityParams);
 };
 
 module.exports = { updateOneStudent };
