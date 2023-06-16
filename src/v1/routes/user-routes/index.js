@@ -7,6 +7,7 @@ const {
     getAllUsers,
     createNewUser,
     updateOneUser,
+    deleteOneUser,
 } = require("../../../controllers/user-controller");
 
 // Import middleware
@@ -28,5 +29,8 @@ router.get("/:userId", getOneUser);
 
 // 4. Update one user by id
 router.patch("/:userId", validateSchema(updateUserSchema), updateOneUser);
+
+// 5. Delete one user by id
+router.delete("/:userId", deleteOneUser);
 
 module.exports = router;
