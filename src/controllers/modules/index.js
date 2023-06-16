@@ -25,7 +25,8 @@ const getAllEntities = async (params) => {
     }
 };
 
-const getOneEntity = async (req, res, idName, service) => {
+const getOneEntity = async (params) => {
+    const { req, res, idName, service } = params;
     const model = req.models;
     const entityId = req.params[idName];
 

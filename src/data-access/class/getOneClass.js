@@ -1,11 +1,15 @@
 const { getOneEntity } = require("../modules");
 
 const getOneClass = (model, classId) => {
-    const desc = "a class";
-    const cond = { id: classId };
-    const attrs = ["id", "class_name", "slug"];
-
-    return getOneEntity(model.Class, desc, classId, cond, attrs);
+    // Get one entity params
+    const oneEntityParams = {
+        desc: "a class",
+        entityId: classId,
+        model: model.Class,
+        cond: { id: classId },
+        attributes: ["id", "class_name", "slug"],
+    };
+    return getOneEntity(oneEntityParams);
 };
 
 module.exports = { getOneClass };

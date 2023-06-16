@@ -21,7 +21,8 @@ const getAllEntities = async (params) => {
     }
 };
 
-const getOneEntity = async (model, desc, entityId, cond, attributes) => {
+const getOneEntity = async (params) => {
+    const { model, desc, entityId, cond, attributes } = params;
     try {
         const entity = await model.findOne({ where: cond, attributes });
         if (!entity) {

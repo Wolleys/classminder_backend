@@ -18,7 +18,8 @@ const getAllEntities = (params) => {
     }
 };
 
-const getOneEntity = (model, entityId, dataAccess) => {
+const getOneEntity = (params) => {
+    const { model, entityId, dataAccess } = params;
     try {
         const entity = dataAccess(model, entityId);
         return entity;
