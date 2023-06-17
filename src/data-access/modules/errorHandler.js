@@ -16,4 +16,10 @@ const notFoundError = (desc, entityId) => {
     throw { status, message };
 };
 
-module.exports = { handleError, notFoundError, conflictError };
+const noUserError = () => {
+    const status = 404;
+    const message = "User doesn't exist";
+    throw { status, message };
+};
+
+module.exports = { handleError, notFoundError, conflictError, noUserError };

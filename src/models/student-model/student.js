@@ -56,9 +56,9 @@ const studentModel = (sequelize) => {
                 },
             },
             refresh_token: {
-                type: DataTypes.STRING,
+                type: DataTypes.JSON,
                 allowNull: true,
-                defaultValue: [],
+                defaultValue: null,
                 get() {
                     const tokens = JSON.parse(this.getDataValue("refresh_token"));
                     return tokens ? tokens.map((id) => id.toString()) : [];
