@@ -16,7 +16,7 @@ const { validateSchema } = require("../../../middlewares/validate-schema");
 
 // Import schema
 const { studentSchema } = require("../../../validation/student-schema");
-const { updatStudentSchema } = require("../../../validation/student-schema/update");
+const { updateStudentSchema } = require("../../../validation/student-schema/update");
 
 // Student routes
 // 1. Create a new student
@@ -29,7 +29,7 @@ router.get("/", getAllStudents);
 router.get("/:studentId", getOneStudent);
 
 // 4. Update one student by id
-router.patch("/:studentId", validateSchema(updatStudentSchema), updateOneStudent);
+router.patch("/:studentId", validateSchema(updateStudentSchema), updateOneStudent);
 
 // 5. Delete one student by id
 router.delete("/:studentId", deleteOneStudent);

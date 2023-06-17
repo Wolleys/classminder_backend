@@ -9,8 +9,11 @@ const getOneTeacher = (model, teacherId) => {
         cond: { id: teacherId },
         attributes: [
             "id",
-            "teacher_name",
-            "teacher_age",
+            "first_name",
+            "middle_name",
+            "last_name",
+            "email",
+            "age",
             "service_number",
             "course_id",
             "class_id",

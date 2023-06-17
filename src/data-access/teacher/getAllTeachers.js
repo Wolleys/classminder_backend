@@ -7,8 +7,11 @@ const getAllTeachers = (model) => {
         order: [["created_at", "DESC"]],
         attributes: [
             "id",
-            "teacher_name",
-            "teacher_age",
+            "first_name",
+            "middle_name",
+            "last_name",
+            "email",
+            "age",
             "service_number",
             "course_id",
             "class_id",

@@ -12,6 +12,15 @@ const createNewStudent = async (model, newStudent) => {
     };
     await alreadyExists(adminNumParams);
 
+    // Check if email already exists
+    const emailParams = {
+        model: model.Student,
+        value: newStudent.email,
+        attributes: ["email"],
+        cond: { email: newStudent.email },
+    };
+    await alreadyExists(emailParams);
+
     // Iterate over each course ID and check if it exists
     for (const courseId of newStudent.course_id) {
         const findCourseId = {
@@ -39,7 +48,11 @@ const createNewStudent = async (model, newStudent) => {
         model: model.Student,
         newEntity: newStudent,
     };
-    return createNewEntity(newEntityParams);
+    const createdEntity = await createNewEntity(newEntityParams);
+
+    // Destructure and separate password field
+    const { password, ...student } = createdEntity.toJSON();
+    return student;
 };
 
 module.exports = { createNewStudent };

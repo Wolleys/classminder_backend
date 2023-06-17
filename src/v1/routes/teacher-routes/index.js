@@ -17,6 +17,7 @@ const { validateSchema } = require("../../../middlewares/validate-schema");
 
 // Import schema
 const { teacherSchema } = require("../../../validation/teacher-schema");
+const { updateTeacherSchema } = require("../../../validation/teacher-schema/update");
 
 // Teacher routes
 // 1. Create a new teacher
@@ -29,7 +30,7 @@ router.get("/", getAllTeachers);
 router.get("/:teacherId", getOneTeacher);
 
 // 4. Update one teacher by id
-router.patch("/:teacherId", updateOneTeacher);
+router.patch("/:teacherId", validateSchema(updateTeacherSchema), updateOneTeacher);
 
 // 5. Delete one teacher by id
 router.delete("/:teacherId", deleteOneTeacher);
