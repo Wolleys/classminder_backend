@@ -55,6 +55,18 @@ const studentModel = (sequelize) => {
                     this.setDataValue("course_id", JSON.stringify(courseIds));
                 },
             },
+            refresh_token: {
+                type: DataTypes.STRING,
+                allowNull: true,
+                defaultValue: [],
+                get() {
+                    const tokens = JSON.parse(this.getDataValue("refresh_token"));
+                    return tokens ? tokens.map((id) => id.toString()) : [];
+                },
+                set(tokens) {
+                    this.setDataValue("refresh_token", JSON.stringify(tokens));
+                },
+            },
         },
         {
             paranoid: true,
