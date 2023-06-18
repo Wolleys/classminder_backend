@@ -12,29 +12,37 @@ const {
 } = require("../../../controllers/student-controller");
 
 // Import middleware
+const { verifyToken } = require("../../../middlewares/auth/jwt");
 const { validateSchema } = require("../../../middlewares/validate-schema");
 
 // Import schema
 const { studentSchema } = require("../../../validation/student-schema");
-const { updateStudentSchema } = require("../../../validation/student-schema/update");
+const {
+    updateStudentSchema,
+} = require("../../../validation/student-schema/update");
 
 // Student routes
 // 1. Create a new student
-router.post("/", validateSchema(studentSchema), createNewStudent);
+router.post("/", verifyToken, validateSchema(studentSchema), createNewStudent);
 
 // 2. Get all students
-router.get("/", getAllStudents);
+router.get("/", verifyToken, getAllStudents);
 
 // 3. Get one student by id
-router.get("/:studentId", getOneStudent);
+router.get("/:studentId", verifyToken, getOneStudent);
 
 // 4. Update one student by id
-router.patch("/:studentId", validateSchema(updateStudentSchema), updateOneStudent);
+router.patch(
+    "/:studentId",
+    verifyToken,
+    validateSchema(updateStudentSchema),
+    updateOneStudent
+);
 
 // 5. Delete one student by id
-router.delete("/:studentId", deleteOneStudent);
+router.delete("/:studentId", verifyToken, deleteOneStudent);
 
 // 6. Delete one courseId from student by id
-router.delete("/:studentId/courses/:courseId", deleteCourseId);
+router.delete("/:studentId/courses/:courseId", verifyToken, deleteCourseId);
 
 module.exports = router;
