@@ -11,6 +11,7 @@ const {
 } = require("../../../controllers/class-controller");
 
 // Import middleware
+const { verifyToken } = require("../../../middlewares/auth/jwt");
 const { validateSchema } = require("../../../middlewares/validate-schema");
 
 // Import schema
@@ -18,18 +19,23 @@ const { classSchema } = require("../../../validation/class-schema");
 
 // Class routes
 // 1. Create a new class
-router.post("/", validateSchema(classSchema), createNewClass);
+router.post("/", verifyToken, validateSchema(classSchema), createNewClass);
 
 // 2. Get all classes
-router.get("/", getAllClasses);
+router.get("/", verifyToken, getAllClasses);
 
 // 3. Get one class by id
-router.get("/:classId", getOneClass);
+router.get("/:classId", verifyToken, getOneClass);
 
 // 4. Update one class by id
-router.patch("/:classId", validateSchema(classSchema), updateOneClass);
+router.patch(
+    "/:classId",
+    verifyToken,
+    validateSchema(classSchema),
+    updateOneClass
+);
 
 // 5. Delete one class by id
-router.delete("/:classId", deleteOneClass);
+router.delete("/:classId", verifyToken, deleteOneClass);
 
 module.exports = router;
