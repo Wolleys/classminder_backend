@@ -1,3 +1,4 @@
+const { findUser } = require("../helpers/findUser");
 const { findRecord } = require("../helpers/findRecord");
 const { handleError, notFoundError } = require("./errorHandler");
 
@@ -80,6 +81,17 @@ const deleteChildEntity = async (params, childEntityDesc) => {
     }
 };
 
+const loginOneEntity = async (params) => {
+    const { model, cond, attributes } = params;
+    const findUserEmail = { model, cond, attributes };
+    try {
+        const user = await findUser(findUserEmail);
+        return user;
+    } catch (error) {
+        handleError(error);
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
@@ -87,4 +99,5 @@ module.exports = {
     updateOneEntity,
     deleteOneEntity,
     deleteChildEntity,
+    loginOneEntity,
 };

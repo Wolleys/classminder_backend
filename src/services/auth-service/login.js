@@ -1,4 +1,4 @@
-const { createNewEntity } = require("../modules");
+const { loginOneEntity } = require("../modules");
 const authData = require("../../data-access/auth");
 
 const login = (model, loginUser) => {
@@ -8,7 +8,7 @@ const login = (model, loginUser) => {
         newEntity: loginUser,
         dataAccess: authData.login,
     };
-    return createNewEntity(newEntityParams);
+    return loginOneEntity(newEntityParams);
 };
 
 module.exports = { login };

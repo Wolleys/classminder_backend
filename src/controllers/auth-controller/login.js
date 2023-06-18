@@ -1,4 +1,4 @@
-const { createNewEntity } = require("../modules");
+const { loginOneEntity } = require("../modules");
 const authService = require("../../services/auth-service");
 
 const login = (req, res) => {
@@ -8,7 +8,7 @@ const login = (req, res) => {
         res,
         service: authService.login,
     };
-    createNewEntity(newEntityParams);
+    loginOneEntity(newEntityParams);
 };
 
 module.exports = { login };

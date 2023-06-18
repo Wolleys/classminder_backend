@@ -68,16 +68,8 @@ const teacherModel = (sequelize) => {
                 },
             },
             refresh_token: {
-                type: DataTypes.JSON,
+                type: DataTypes.STRING,
                 allowNull: true,
-                defaultValue: null,
-                get() {
-                    const tokens = JSON.parse(this.getDataValue("refresh_token"));
-                    return tokens ? tokens.map((id) => id.toString()) : [];
-                },
-                set(tokens) {
-                    this.setDataValue("refresh_token", JSON.stringify(tokens));
-                },
             },
         },
         {

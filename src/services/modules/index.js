@@ -58,6 +58,16 @@ const deleteChildEntity = (params) => {
     }
 };
 
+const loginOneEntity = (params) => {
+    const { model, newEntity, dataAccess } = params;
+    try {
+        const createdEntity = dataAccess(model, newEntity);
+        return createdEntity;
+    } catch (error) {
+        throw error;
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
@@ -65,4 +75,5 @@ module.exports = {
     updateOneEntity,
     deleteOneEntity,
     deleteChildEntity,
+    loginOneEntity,
 };

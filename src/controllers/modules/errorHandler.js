@@ -5,4 +5,11 @@ const handleError = (res, error) => {
     });
 };
 
-module.exports = handleError;
+const authError = (res, error) => {
+    res.status(error?.status || 500).send({
+        auth: false,
+        error: error?.message || error,
+    });
+};
+
+module.exports = { handleError, authError };

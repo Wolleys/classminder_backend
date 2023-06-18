@@ -1,4 +1,4 @@
-const handleError = require("./errorHandler");
+const { handleError, authError } = require("./errorHandler");
 
 const createNewEntity = async (params) => {
     const { req, res, service } = params;
@@ -85,6 +85,27 @@ const deleteChildEntity = async (params) => {
     }
 };
 
+const loginOneEntity = async (params) => {
+    const { req, res, service } = params;
+    const body = req.body;
+    const model = req.models;
+
+    try {
+        const entity = await service(model, body);
+        let options = {
+            // secure: true,
+            httpOnly: true,
+            // sameSite: "None",
+            maxAge: 20 * 60 * 1000, // Expires in 20min
+        };
+
+        res.cookie("jwt", entity.refreshToken, options); // Create secure cookie with refresh token
+        res.status(200).send({ auth: true, token: entity.accessToken }); // Send access token to user
+    } catch (error) {
+        authError(res, error);
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
@@ -92,4 +113,5 @@ module.exports = {
     updateOneEntity,
     deleteOneEntity,
     deleteChildEntity,
+    loginOneEntity,
 };

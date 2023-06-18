@@ -36,16 +36,8 @@ const userModel = (sequelize) => {
                 allowNull: false,
             },
             refresh_token: {
-                type: DataTypes.JSON,
+                type: DataTypes.STRING,
                 allowNull: true,
-                defaultValue: null,
-                get() {
-                    const tokens = this.getDataValue("refresh_token");
-                    return tokens ? tokens.map((id) => id.toString()) : [];
-                },
-                set(tokens) {
-                    this.setDataValue("refresh_token", tokens);
-                },
             },
         },
         {
