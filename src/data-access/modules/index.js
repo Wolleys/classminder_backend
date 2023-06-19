@@ -92,6 +92,23 @@ const loginOneEntity = async (params) => {
     }
 };
 
+const logoutOneEntity = async (params) => {
+    const { model, cond, attributes, cookies } = params;
+    try {
+        const verifyCookies = !cookies?.jwt;
+        if (verifyCookies) {
+            throw { status: 200, message: "You are logged out!" };
+        }
+
+        // Check if user has a valid refresh token cookie in the db
+        const refreshToken = { model, cond, attributes };
+        const user = await findUser(refreshToken);
+        return user;
+    } catch (error) {
+        handleError(error);
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
@@ -100,4 +117,5 @@ module.exports = {
     deleteOneEntity,
     deleteChildEntity,
     loginOneEntity,
+    logoutOneEntity,
 };

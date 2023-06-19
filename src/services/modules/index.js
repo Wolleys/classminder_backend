@@ -61,8 +61,18 @@ const deleteChildEntity = (params) => {
 const loginOneEntity = (params) => {
     const { model, newEntity, dataAccess } = params;
     try {
-        const createdEntity = dataAccess(model, newEntity);
-        return createdEntity;
+        const entity = dataAccess(model, newEntity);
+        return entity;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const logoutOneEntity = (params) => {
+    const { model, cookies, dataAccess } = params;
+    try {
+        const entity = dataAccess(model, cookies);
+        return entity;
     } catch (error) {
         throw error;
     }
@@ -76,4 +86,5 @@ module.exports = {
     deleteOneEntity,
     deleteChildEntity,
     loginOneEntity,
+    logoutOneEntity,
 };
