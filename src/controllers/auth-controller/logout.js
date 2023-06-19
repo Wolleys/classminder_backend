@@ -1,4 +1,4 @@
-const { loginOneEntity } = require("../modules");
+const { logoutOneEntity } = require("../modules");
 const authService = require("../../services/auth-service");
 
 const logout = (req, res) => {
@@ -8,7 +8,7 @@ const logout = (req, res) => {
         res,
         service: authService.logout,
     };
-    loginOneEntity(oneEntityParams);
+    logoutOneEntity(oneEntityParams);
 };
 
 module.exports = { logout };
