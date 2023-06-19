@@ -109,6 +109,23 @@ const logoutOneEntity = async (params) => {
     }
 };
 
+const refreshOneEntity = async (params) => {
+    const { model, cond, attributes, cookies } = params;
+    try {
+        const verifyCookies = !cookies?.jwt;
+        if (verifyCookies) {
+            throw { status: 401, message: "You are not authenticated!" };
+        }
+
+        // Check if user has a valid refresh token cookie in the db
+        const refreshToken = { model, cond, attributes };
+        const user = await findUser(refreshToken);
+        return user;
+    } catch (error) {
+        handleError(error);
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
@@ -118,4 +135,5 @@ module.exports = {
     deleteChildEntity,
     loginOneEntity,
     logoutOneEntity,
+    refreshOneEntity,
 };

@@ -78,6 +78,16 @@ const logoutOneEntity = (params) => {
     }
 };
 
+const refreshOneEntity = (params) => {
+    const { model, cookies, dataAccess } = params;
+    try {
+        const entity = dataAccess(model, cookies);
+        return entity;
+    } catch (error) {
+        throw error;
+    }
+};
+
 module.exports = {
     createNewEntity,
     getAllEntities,
@@ -87,4 +97,5 @@ module.exports = {
     deleteChildEntity,
     loginOneEntity,
     logoutOneEntity,
+    refreshOneEntity,
 };

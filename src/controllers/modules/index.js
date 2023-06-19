@@ -121,11 +121,26 @@ const logoutOneEntity = async (params) => {
 
         if (!entity) {
             res.clearCookie("jwt", options);
-            res.status(200).send({ auth: false, message: "You are already logged out" });
+            res
+                .status(200)
+                .send({ auth: false, message: "You are already logged out" });
         }
 
         res.clearCookie("jwt", options); // Delete the accessToken also on client
         res.status(200).send({ auth: false, message: "Logout successfully!" });
+    } catch (error) {
+        authError(res, error);
+    }
+};
+
+const refreshOneEntity = async (params) => {
+    const { req, res, service } = params;
+    const model = req.models;
+    const cookies = req.cookies;
+
+    try {
+        const accessToken = await service(model, cookies);
+        res.status(200).send({ auth: true, token: accessToken });
     } catch (error) {
         authError(res, error);
     }
@@ -140,4 +155,5 @@ module.exports = {
     deleteChildEntity,
     loginOneEntity,
     logoutOneEntity,
+    refreshOneEntity,
 };
