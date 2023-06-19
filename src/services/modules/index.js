@@ -1,92 +1,12 @@
-const createNewEntity = (params) => {
-    const { model, newEntity, dataAccess } = params;
-    try {
-        const createdEntity = dataAccess(model, newEntity);
-        return createdEntity;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const getAllEntities = (params) => {
-    const { model, dataAccess } = params;
-    try {
-        const allEntities = dataAccess(model);
-        return allEntities;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const getOneEntity = (params) => {
-    const { model, entityId, dataAccess } = params;
-    try {
-        const entity = dataAccess(model, entityId);
-        return entity;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const updateOneEntity = (params) => {
-    const { model, entityId, updateData, dataAccess } = params;
-    try {
-        const entity = dataAccess(model, entityId, updateData);
-        return entity;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const deleteOneEntity = (params) => {
-    const { model, entityId, dataAccess } = params;
-    try {
-        const entity = dataAccess(model, entityId);
-        return entity;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const deleteChildEntity = (params) => {
-    const { model, parentEntityId, childEntityId, dataAccess } = params;
-    try {
-        const deletedId = dataAccess(model, parentEntityId, childEntityId);
-        return deletedId;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const loginOneEntity = (params) => {
-    const { model, newEntity, dataAccess } = params;
-    try {
-        const entity = dataAccess(model, newEntity);
-        return entity;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const logoutOneEntity = (params) => {
-    const { model, cookies, dataAccess } = params;
-    try {
-        const entity = dataAccess(model, cookies);
-        return entity;
-    } catch (error) {
-        throw error;
-    }
-};
-
-const refreshOneEntity = (params) => {
-    const { model, cookies, dataAccess } = params;
-    try {
-        const entity = dataAccess(model, cookies);
-        return entity;
-    } catch (error) {
-        throw error;
-    }
-};
+const createNewEntity = require("./createNewEntity");
+const getAllEntities = require("./getAllEntities");
+const getOneEntity = require("./getOneEntity");
+const updateOneEntity = require("./updateOneEntity");
+const deleteOneEntity = require("./deleteOneEntity");
+const deleteChildEntity = require("./deleteChildEntity");
+const loginOneEntity = require("./loginOneEntity");
+const logoutOneEntity = require("./logoutOneEntity");
+const refreshOneEntity = require("./refreshOneEntity");
 
 module.exports = {
     createNewEntity,
