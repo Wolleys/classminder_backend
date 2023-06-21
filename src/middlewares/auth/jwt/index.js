@@ -4,7 +4,7 @@ const env = process.env;
 const createToken = (atclaims, rtclaims) => {
     try {
         const accessToken = sign(atclaims, env.ACCESS_TOKEN_SECRET, {
-            expiresIn: "10m",
+            expiresIn: "2h",
         });
 
         const refreshToken = sign(rtclaims, env.REFRESH_TOKEN_SECRET, {
