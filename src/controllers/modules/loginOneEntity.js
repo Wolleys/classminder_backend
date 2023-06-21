@@ -20,7 +20,7 @@ const loginOneEntity = async (params) => {
             // secure: true,
             httpOnly: true,
             // sameSite: "None",
-            maxAge: 20 * 60 * 1000, // Expires in 20min
+            maxAge: 10 * 60 * 1000, // Expires in 10min
         };
 
         res.cookie("jwt", entity.refreshToken, options); // Create secure cookie with refresh token

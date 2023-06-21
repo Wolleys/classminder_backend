@@ -26,7 +26,7 @@ const refreshToken = async (model, cookies) => {
         // Issue a new access token
         const adminAtClaims = { id: data.id, role: adminUser.role };
         const adminAccessToken = sign(adminAtClaims, env.ACCESS_TOKEN_SECRET, {
-            expiresIn: "30s",
+            expiresIn: "10m",
         });
         return adminAccessToken;
     }
@@ -49,7 +49,7 @@ const refreshToken = async (model, cookies) => {
         // Issue a new access token
         const tchrAtClaims = { id: data.id, role: teacherUser.role };
         const tchrAcsTkn = sign(tchrAtClaims, env.ACCESS_TOKEN_SECRET, {
-            expiresIn: "30s",
+            expiresIn: "10m",
         });
         return tchrAcsTkn;
     }
@@ -72,7 +72,7 @@ const refreshToken = async (model, cookies) => {
         // Issue a new access token
         const studAtClaims = { id: data.id, role: studentUser.role };
         const studAcsTkn = sign(studAtClaims, env.ACCESS_TOKEN_SECRET, {
-            expiresIn: "30s",
+            expiresIn: "10m",
         });
         return studAcsTkn;
     }
