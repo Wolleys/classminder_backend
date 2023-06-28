@@ -44,9 +44,9 @@ const studentModel = (sequelize) => {
                 allowNull: false,
             },
             course_id: {
-                type: DataTypes.TEXT,
-                // allowNull: false,
-                // defaultValue: [],
+                type: DataTypes.JSON,
+                allowNull: false,
+                defaultValue: [],
                 get() {
                     const courseIds = JSON.parse(this.getDataValue("course_id"));
                     return courseIds ? courseIds.map((id) => id.toString()) : [];
