@@ -44,24 +44,26 @@ const teacherModel = (sequelize) => {
                 allowNull: false,
             },
             course_id: {
-                type: DataTypes.JSON,
-                allowNull: false,
-                defaultValue: [],
+                type: DataTypes.TEXT,
+                // allowNull: false,
+                // defaultValue: [],
                 get() {
                     const courseIds = JSON.parse(this.getDataValue("course_id"));
-                    return courseIds ? courseIds.map((id) => id.toString()) : [];
+                    // return courseIds ? courseIds.map((id) => id.toString()) : [];
+                    return courseIds;
                 },
                 set(courseIds) {
                     this.setDataValue("course_id", JSON.stringify(courseIds));
                 },
             },
             class_id: {
-                type: DataTypes.JSON,
-                allowNull: false,
-                defaultValue: [],
+                type: DataTypes.TEXT,
+                // allowNull: false,
+                // defaultValue: [],
                 get() {
                     const classIds = JSON.parse(this.getDataValue("class_id"));
-                    return classIds ? classIds.map((id) => id.toString()) : [];
+                    // return classIds ? classIds.map((id) => id.toString()) : [];
+                    return classIds;
                 },
                 set(classIds) {
                     this.setDataValue("class_id", JSON.stringify(classIds));
