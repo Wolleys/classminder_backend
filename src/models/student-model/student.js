@@ -44,7 +44,7 @@ const studentModel = (sequelize) => {
                 allowNull: false,
             },
             course_id: {
-                type: DataTypes.JSON,
+                type: DataTypes.TEXT,
                 allowNull: false,
                 defaultValue: [],
                 get() {
