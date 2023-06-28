@@ -9,7 +9,7 @@ const courseAssocs = (sequelize) => {
         const Student = studentModel(sequelize);
 
         // 1. Course belongs to Class (belongsTo) 1:1
-        Course.belongsTo(Class, { foreignKey: "class_id" });
+        // Course.belongsTo(Class, { foreignKey: "class_id" });
 
         // 2. Course has many Students (hasMany) 1:n
         Course.hasMany(Student, { foreignKey: "course_id" });
