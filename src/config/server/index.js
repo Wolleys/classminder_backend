@@ -7,7 +7,7 @@ const server = (app) => {
     try {
         app.listen(PORT, () => {
             console.log("Server: Started on port", PORT);
-            setTimeout(connect, 1000);
+            // setTimeout(connect, 1000);
         });
     } catch (error) {
         console.error(error);
