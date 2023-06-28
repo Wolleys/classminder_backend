@@ -17,10 +17,10 @@ const updateOneEntity = async (params) => {
     const entityId = req.params[idName];
 
     try {
-        await service(model, entityId, body);
+        const updatedEntity = await service(model, entityId, body);
         res
             .status(200)
-            .send({ status: "OK", message: "Record updated successfully." });
+            .send({ status: "OK", data: updatedEntity });
     } catch (error) {
         handleError(res, error);
     }
